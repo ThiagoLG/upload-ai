@@ -1,0 +1,37 @@
+# @name get-prompts
+GET http://localhost:3333/prompts
+
+###
+
+# @name upload
+POST http://localhost:3333/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4WxkTrZu0gW
+
+------WebKitFormBoundary7MA4WxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="comida_angolana.mp3"
+Content-Type: audio/mpeg
+
+< ./comida_angolana.mp3
+
+------WebKitFormBoundary7MA4WxkTrZu0gW--
+
+###
+# @name create-transcription
+POST http://localhost:3333/videos/72346a22-9e0e-4b5c-a3cc-8d86c290e281/transcription
+Content-Type: application/json
+
+{
+  "prompt": "comida, comida angolana, culinária, comer, almoço, angola"
+}
+
+####
+
+# @generate-ai-completion
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "72346a22-9e0e-4b5c-a3cc-8d86c290e281",
+  "temperature": 0.5,
+  "template": "Liste para mim todas as comidas típicas angoladas presentes no texto abaixo: '''{transcription}'''"
+}
