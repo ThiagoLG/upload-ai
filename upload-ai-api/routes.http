@@ -33,5 +33,5 @@ Content-Type: application/json
 {
   "videoId": "72346a22-9e0e-4b5c-a3cc-8d86c290e281",
   "temperature": 0.5,
-  "template": "Liste para mim todas as comidas típicas angoladas presentes no texto abaixo: '''{transcription}'''"
+  "prompt": "Liste para mim todas as comidas típicas angoladas presentes no texto abaixo: '''{transcription}'''"
 }
